@@ -1,8 +1,23 @@
 var stompClient = null;
-
+var plotData = [];
 
 function updateGraph(data){
     console.log("Got data from server: " + data);
+
+    for(var agent in data){
+        if (!plotData.hasOwnProperty(agent)){
+            plotData[agent] = {
+                x:[],
+                y:[],
+                mode: 'lines+markers'
+            };
+        }
+        plotData[agent].x.push(data[agent].x);
+        plotData[agent].y.push(data[agent].y);
+    }
+
+    var layout = {};
+    Plotly.update('plot', Object.values(plotData), layout);
 }
 
 function connect() {
@@ -11,9 +26,11 @@ function connect() {
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/new-coords', function (data) {
-            updateGraph(JSON.parse(data.body).content);
+            updateGraph(JSON.parse(data.body));
         });
     });
+    plotData = [];
+    Plotly.newPlot('plot', plotData, {});
 }
 
 function sendSetting() {
@@ -53,4 +70,5 @@ $(function () {
     });
 
     connect();
+
 });

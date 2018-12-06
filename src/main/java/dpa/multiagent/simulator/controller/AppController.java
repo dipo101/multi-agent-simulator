@@ -17,23 +17,21 @@ public class AppController {
     private Simulator sm;
 
     @MessageMapping("/settings")
-    @SendTo("/topic/new-coords")
-    public String greeting(SimulatorSettings settings) {
+    public void greeting(SimulatorSettings settings) {
         // set simulator settings based on `settings` object
         // run the simulator
         // return the next coord
         this.sm = new Simulator(settings);
-        return settings.toString();
     }
 
 
     @MessageMapping("/next-coords")
     @SendTo("/topic/new-coords")
-    public Map<Agent, Point2D> getNext()  throws Exception{
-        Map<Agent, Point2D> coords = new HashMap<>();
+    public Map<String, Point2D> getNext()  throws Exception{
+        Map<String, Point2D> coords = new HashMap<>();
         if (sm.update()) {
             for (Agent agent : sm.getAgents()) {
-                coords.put(agent, agent.getLatestPos());
+                coords.put(agent.getName(), agent.getLatestPos());
             }
         }
         return coords;
