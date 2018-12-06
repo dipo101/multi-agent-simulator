@@ -8,6 +8,26 @@ public class SimulatorSettings {
     double minAnglePerFrame;
     int maxSpeedPerFrame;
     int minSpeedPerFrame;
+    AngleSettings angleSettings;
+
+    public AngleSettings getAngleSettings() {
+        return angleSettings;
+    }
+
+    public void setAngleSettings(AngleSettings angleSettings) {
+        this.angleSettings = angleSettings;
+    }
+
+    public SpeedSettings getSpeedSettings() {
+        return speedSettings;
+    }
+
+    public void setSpeedSettings(SpeedSettings speedSettings) {
+        this.speedSettings = speedSettings;
+    }
+
+    SpeedSettings speedSettings;
+
 
     public int getNumAgents() {
         return numAgents;
@@ -80,6 +100,8 @@ public class SimulatorSettings {
         this.maxSpeedPerFrame = speedSettings.maxSpeedPerFrame;
         this.minSpeedPerFrame = speedSettings.minSpeedPerFrame;
         this.speedSamplingStrategy = speedSettings.speedSamplingStrategy;
+        this.speedSettings = speedSettings;
+        this.angleSettings = angleSettings;
     }
 
     class AngleSettings {
