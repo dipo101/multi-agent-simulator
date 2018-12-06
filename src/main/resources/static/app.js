@@ -9,15 +9,16 @@ function updateGraph(data){
             plotData[agent] = {
                 x:[],
                 y:[],
-                mode: 'lines+markers'
+                mode: 'lines+markers',
+                name: agent
             };
         }
-        plotData[agent].x.push(data[agent].x);
-        plotData[agent].y.push(data[agent].y);
+        plotData[agent].x = plotData[agent].x.concat([data[agent].x]);
+        plotData[agent].y = plotData[agent].y.concat([data[agent].y]);
     }
 
     var layout = {};
-    Plotly.update('plot', Object.values(plotData), layout);
+    Plotly.react('plot', Object.values(plotData), layout);
 }
 
 function connect() {
