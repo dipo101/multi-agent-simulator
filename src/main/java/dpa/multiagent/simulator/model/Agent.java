@@ -22,12 +22,19 @@ public class Agent {
         }
     }
 
-    public Point2D getNextPos(double angle, int speed) {
+    public Point2D getNextPos(double angle, int speedMPH, int FPS) {
         Point2D pt = new Point2D.Double();
         double x, y;
+        double dist;
+        int speedMPS = speedMPH / (60 * 60);
 
-        x = Math.sin(angle);
-        y = Math.cos(angle);
+        // dist = speed * time
+        // update is called once per frame
+
+        dist = (1 / FPS) * speedMPS;
+
+        x = Math.sin(angle) * dist;
+        y = Math.cos(angle) * dist;
 
         pt.setLocation(x, y);
 
