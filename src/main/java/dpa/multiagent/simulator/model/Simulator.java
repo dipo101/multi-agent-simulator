@@ -114,6 +114,9 @@ public class Simulator {
 
     public Simulator(SimulatorSettings settings) {
         this.settings = settings;
+
+        for (int i = 0; i < settings.numAgents; i++)
+            agents.add(new Agent(agents.size()+1));
     }
 
     class Line {

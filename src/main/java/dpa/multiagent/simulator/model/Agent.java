@@ -41,8 +41,8 @@ public class Agent {
         return pt;
     }
 
-    public Agent() {
-        name = "";
+    public Agent(int newId) {
+        name = "Agent " + newId;
         path = new ArrayList<>();
         path.add(new Point2D.Double(0, 0));
     }
