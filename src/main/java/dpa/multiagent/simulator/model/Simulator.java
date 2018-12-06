@@ -111,6 +111,10 @@ public class Simulator {
         this.agents = agents;
     }
 
+    public Simulator(SimulatorSettings settings) {
+        this.settings = settings;
+    }
+
     class Line {
         double m, c;
         double x1, y1, x2, y2;
