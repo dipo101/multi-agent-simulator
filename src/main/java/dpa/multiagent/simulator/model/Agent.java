@@ -32,7 +32,7 @@ public class Agent {
         // dist = speed * time
         // update is called once per frame
 
-        dist = (1 / FPS) * speedMPS;
+        dist = (1.0 / FPS) * speedMPS;
 
         x = Math.sin(angle) * dist;
         y = Math.cos(angle) * dist;
