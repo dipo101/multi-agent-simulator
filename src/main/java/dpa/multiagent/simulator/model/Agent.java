@@ -27,7 +27,7 @@ public class Agent {
         Point2D pt = new Point2D.Double();
         double x, y;
         double dist;
-        int speedMPS = speedMPH / (60 * 60);
+        double speedMPS = speedMPH / (60 * 60.0);
 
         // dist = speed * time
         // update is called once per frame
