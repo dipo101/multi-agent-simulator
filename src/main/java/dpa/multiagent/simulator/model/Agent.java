@@ -7,12 +7,12 @@ import java.util.ArrayList;
 public class Agent {
 
     private String name;
-    private List<Point> agents;
+    private List<Point> path;
 
     public Agent()
     {
         name = "";
-        agents = new ArrayList<>();
+        path = new ArrayList<>();
     }
 
     public String getName() {
