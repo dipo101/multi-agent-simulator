@@ -10,14 +10,14 @@ function connect() {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/greetings', function (data) {
+        stompClient.subscribe('/topic/new-coords', function (data) {
             updateGraph(JSON.parse(data.body).content);
         });
     });
 }
 
 function sendSetting() {
-    stompClient.send("/app/hello", {}, JSON.stringify({
+    stompClient.send("/app/settings", {}, JSON.stringify({
         'numAgents': $("#a1").val(),
         'angleSettings': {
             'angleSamplingStrategy':$("#a4").val(),
@@ -33,6 +33,10 @@ function sendSetting() {
     }));
 }
 
+function getNewCoord() {
+    stompClient.send("app/next-coords");
+}
+
 function disconnect() {
     if (stompClient !== null) {
         stompClient.disconnect();
@@ -45,6 +49,7 @@ $(function () {
     $("form").on('submit', function (e) {
         e.preventDefault();
         sendSetting();
+        setInterval(getNewCoord, 3000);
     });
 
     connect();
