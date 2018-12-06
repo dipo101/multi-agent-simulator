@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>dpa</groupId>
-	<artifactId>multi-agent simulator</artifactId>
+	<artifactId>multi-agent-simulator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>multi-agent simulator</name>
