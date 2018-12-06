@@ -40,7 +40,7 @@ public class Simulator {
     public void update() throws Exception {
         HashMap<Agent, Pair> agentPairPositionMap = new HashMap<>();
         for (Agent agent : agents) {
-            Point2D nextPosition = agent.getNextPos(getAngle(), getSpeed());
+            Point2D nextPosition = agent.getNextPos(getAngle(), getSpeed(), SimulatorSettings.getFramesPerSecond());
             Point2D currentPosition = agent.getLatestPos();
             Pair<Point2D, Point2D> positions = new Pair<>(currentPosition, nextPosition);
             agentPairPositionMap.put(agent, positions);
