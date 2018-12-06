@@ -34,7 +34,7 @@ function sendSetting() {
 }
 
 function getNewCoord() {
-    stompClient.send("app/next-coords", {}, JSON.stringify());
+    stompClient.send("/app/next-coords", {}, JSON.stringify());
 }
 
 function disconnect() {
@@ -49,7 +49,7 @@ $(function () {
     $("form").on('submit', function (e) {
         e.preventDefault();
         sendSetting();
-        setInterval(getNewCoord, 3000);
+        setInterval(getNewCoord, 1000);
     });
 
     connect();

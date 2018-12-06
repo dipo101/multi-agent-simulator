@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Agent {
 
@@ -15,7 +16,7 @@ public class Agent {
     }
 
     public Point2D getLatestPos() throws Exception {
-        if (path.size() > 1) {
+        if (path.size() >= 1) {
             return path.get(path.size() - 1);
         } else {
             throw new Exception();
@@ -44,7 +45,8 @@ public class Agent {
     public Agent(int newId) {
         name = "Agent " + newId;
         path = new ArrayList<>();
-        path.add(new Point2D.Double(0, 0));
+        Random rand = new Random();
+        path.add(new Point2D.Double(rand.nextInt(50)+1 , rand.nextInt(50)+1));
     }
 
     public String getName() {
