@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multi-agent Simulator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container" style="padding-top:30px">
+<div class="row">
+    <div class="col-sm-6">
+        <form>
+            <div class="form-group row">
+                <label for="a1" class="col-sm-6 col-form-label">Agent Number</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="a1" name="agent-number" value="3">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="a2" class="col-sm-6 col-form-label">Max Angle per Frame</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="a2" name="max-angle" value="0.2">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="a3" class="col-sm-6 col-form-label">Min Angle per Frame</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="a3" name="min-angle" value="-0.2">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="a4" class="col-sm-6 col-form-label">Angle Sampling Strategy</label>
+                <div class="col-sm-6">
+                    <select class="custom-select" id="a4" name="angle-sampling-strategy">
+                        <option selected>Linear</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="a5" class="col-sm-6 col-form-label">Max Speed per Frame</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="a5" name="max-speed" value="50">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="a6" class="col-sm-6 col-form-label">Min Speed per Frame</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="a6" name="max-angle" value="0">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="a7" class="col-sm-6 col-form-label">Speed Sampling Strategy</label>
+                <div class="col-sm-6">
+                    <select class="custom-select" id="a7" name="speed-sampling-strategy">
+                        <option selected>Linear</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-6">
+
+    </div>
+
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+</body>
+</html>
