@@ -9,7 +9,6 @@ function connect() {
     var socket = new SockJS('/gs-guide-websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/greetings', function (data) {
             updateGraph(JSON.parse(data.body).content);
@@ -18,7 +17,7 @@ function connect() {
 }
 
 function sendSetting() {
-    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+    stompClient.send("/app/hello", {}, JSON.stringify({'a1': $("#a1").val()}));
 }
 
 function disconnect() {
