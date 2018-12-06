@@ -8,6 +8,8 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 import java.awt.geom.Point2D;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class AppController {
@@ -27,12 +29,13 @@ public class AppController {
 
     @MessageMapping("/next-coords")
     @SendTo("/topic/new-coords")
-    public Point2D getNext()  throws Exception{
+    public Map<Agent, Point2D> getNext()  throws Exception{
+        Map<Agent, Point2D> coords = new HashMap<>();
         if (sm.update()) {
             for (Agent agent : sm.getAgents()) {
-
+                coords.put(agent, agent.getLatestPos());
             }
         }
-        return new Point2D.Double(1.0, 1.0);
+        return coords;
     }
 }
