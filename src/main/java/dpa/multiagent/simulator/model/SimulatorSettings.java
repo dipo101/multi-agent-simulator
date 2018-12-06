@@ -3,7 +3,7 @@ package dpa.multiagent.simulator.model;
 public class SimulatorSettings {
     int numAgents;
     static final int FRAMES_PER_SECOND = 20;
-    ANGLE_SAMPLING_STRATEGY angleSamplingStrategy;
+    AngleSettings.ANGLE_SAMPLING_STRATEGY angleSamplingStrategy;
     double maxAnglePerFrame;
     double minAnglePerFrame;
     int maxSpeedPerFrame;
@@ -41,11 +41,11 @@ public class SimulatorSettings {
         return FRAMES_PER_SECOND;
     }
 
-    public ANGLE_SAMPLING_STRATEGY getAngleSamplingStrategy() {
+    public AngleSettings.ANGLE_SAMPLING_STRATEGY getAngleSamplingStrategy() {
         return angleSamplingStrategy;
     }
 
-    public void setAngleSamplingStrategy(ANGLE_SAMPLING_STRATEGY angleSamplingStrategy) {
+    public void setAngleSamplingStrategy(AngleSettings.ANGLE_SAMPLING_STRATEGY angleSamplingStrategy) {
         this.angleSamplingStrategy = angleSamplingStrategy;
     }
 
@@ -81,15 +81,15 @@ public class SimulatorSettings {
         this.minSpeedPerFrame = minSpeedPerFrame;
     }
 
-    public SPEED_SAMPLING_STRATEGY getSpeedSamplingStrategy() {
+    public SpeedSettings.SPEED_SAMPLING_STRATEGY getSpeedSamplingStrategy() {
         return speedSamplingStrategy;
     }
 
-    public void setSpeedSamplingStrategy(SPEED_SAMPLING_STRATEGY speedSamplingStrategy) {
+    public void setSpeedSamplingStrategy(SpeedSettings.SPEED_SAMPLING_STRATEGY speedSamplingStrategy) {
         this.speedSamplingStrategy = speedSamplingStrategy;
     }
 
-    SPEED_SAMPLING_STRATEGY speedSamplingStrategy;
+    SpeedSettings.SPEED_SAMPLING_STRATEGY speedSamplingStrategy;
 
 
     SimulatorSettings(int numAgents, AngleSettings angleSettings, SpeedSettings speedSettings) {
@@ -104,47 +104,5 @@ public class SimulatorSettings {
         this.angleSettings = angleSettings;
     }
 
-    class AngleSettings {
-        ANGLE_SAMPLING_STRATEGY angleSamplingStrategy;
-        double maxAnglePerFrame;
-        double minAnglePerFrame;
-
-        public AngleSettings(ANGLE_SAMPLING_STRATEGY angleSamplingStrategy, double maxAnglePerFrame, double minAnglePerFrame) {
-            this.angleSamplingStrategy = angleSamplingStrategy;
-            this.maxAnglePerFrame = maxAnglePerFrame;
-            this.minAnglePerFrame = minAnglePerFrame;
-        }
-    }
-
-    class SpeedSettings {
-        int maxSpeedPerFrame;
-        int minSpeedPerFrame;
-        SPEED_SAMPLING_STRATEGY speedSamplingStrategy;
-
-        public SpeedSettings(int maxSpeedPerFrame, int minSpeedPerFrame, SPEED_SAMPLING_STRATEGY speedSamplingStrategy) {
-            this.maxSpeedPerFrame = maxSpeedPerFrame;
-            this.minSpeedPerFrame = minSpeedPerFrame;
-            this.speedSamplingStrategy = speedSamplingStrategy;
-        }
-    }
-
-
-    enum ANGLE_SAMPLING_STRATEGY {
-        LINEAR("linear");
-        String name;
-
-        ANGLE_SAMPLING_STRATEGY(String name) {
-            this.name = name;
-        }
-    }
-
-    enum SPEED_SAMPLING_STRATEGY {
-        LINEAR("linear");
-        String name;
-
-        SPEED_SAMPLING_STRATEGY(String name) {
-            this.name = name;
-        }
-    }
 
 }
