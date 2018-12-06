@@ -23,7 +23,7 @@ public class Agent {
         }
     }
 
-    public Point2D getNextPos(double angle, int speedMPH, int FPS) {
+    public Point2D getNextPos(double angle, int speedMPH, int FPS) throws Exception {
         Point2D pt = new Point2D.Double();
         double x, y;
         double dist;
@@ -37,7 +37,7 @@ public class Agent {
         x = Math.sin(angle) * dist;
         y = Math.cos(angle) * dist;
 
-        pt.setLocation(x, y);
+        pt.setLocation(getLatestPos().getX() + x, getLatestPos().getY() + y);
 
         return pt;
     }
