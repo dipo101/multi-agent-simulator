@@ -37,7 +37,7 @@ public class Simulator {
         return Math.hypot(posA.getX() - posB.getX(), posA.getY() - posB.getY());
     }
 
-    public void update() throws Exception {
+    public boolean update() throws Exception {
         HashMap<Agent, Pair> agentPairPositionMap = new HashMap<>();
         for (Agent agent : agents) {
             Point2D nextPosition = agent.getNextPos(getAngle(), getSpeed(), SimulatorSettings.getFramesPerSecond());
@@ -54,7 +54,7 @@ public class Simulator {
                 Point2D endPosB = (Point2D) agentPairPositionMap.get(agent2).getValue();
                 if (!agent.equals(agent2)) {
                     if (checkCollision(startPosA, startPosB, endPosA, endPosB)) {
-                        return;
+                        return false;
                     }
                 }
             }
@@ -63,6 +63,7 @@ public class Simulator {
         for (Agent agent : agentPairPositionMap.keySet()) {
             agent.updatePos((Point2D) ((agentPairPositionMap.get(agent)).getValue()));
         }
+        return true;
 
     }
 

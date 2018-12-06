@@ -1,5 +1,6 @@
 package dpa.multiagent.simulator.controller;
 
+import dpa.multiagent.simulator.model.Agent;
 import dpa.multiagent.simulator.model.Simulator;
 import dpa.multiagent.simulator.model.SimulatorSettings;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -26,8 +27,12 @@ public class AppController {
 
     @MessageMapping("/next-coords")
     @SendTo("/topic/new-coords")
-    public Point2D getNext() {
+    public Point2D getNext()  throws Exception{
+        if (sm.update()) {
+            for (Agent agent : sm.getAgents()) {
 
+            }
+        }
         return new Point2D.Double(1.0, 1.0);
     }
 }
