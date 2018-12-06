@@ -34,7 +34,7 @@ function sendSetting() {
 }
 
 function getNewCoord() {
-    stompClient.send("app/next-coords");
+    stompClient.send("app/next-coords", {}, JSON.stringify());
 }
 
 function disconnect() {

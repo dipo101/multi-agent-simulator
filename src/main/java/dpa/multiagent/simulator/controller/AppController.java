@@ -17,7 +17,7 @@ public class AppController {
     private Simulator sm;
 
     @MessageMapping("/settings")
-    @SendTo("/topic/simulate")
+    @SendTo("/topic/new-coords")
     public String greeting(SimulatorSettings settings) {
         // set simulator settings based on `settings` object
         // run the simulator

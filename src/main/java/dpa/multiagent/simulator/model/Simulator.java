@@ -5,6 +5,7 @@ import javafx.util.Pair;
 import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -114,9 +115,10 @@ public class Simulator {
 
     public Simulator(SimulatorSettings settings) {
         this.settings = settings;
+        agents = new ArrayList<>();
 
         for (int i = 0; i < settings.numAgents; i++)
-            agents.add(new Agent(agents.size()+1));
+            agents.add(new Agent(i+1));
     }
 
     class Line {
