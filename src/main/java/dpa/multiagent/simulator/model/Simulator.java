@@ -16,7 +16,7 @@ public class Simulator {
                 continue;
 
             currPosAgent2 = a.getLatestPos();
-            nextPosAgent2 = a.getNextPos(getAngle(), getSpeed());
+            nextPosAgent2 = a.getNextPos(getAngle(), getSpeed(), SimulatorSettings.getFramesPerSecond());
 
             // Compare currPos currPosAgent2, etc to determine collision
         }
@@ -28,7 +28,7 @@ public class Simulator {
         Point2D pt;
 
         for (Agent a : agents) {
-            pt = a.getNextPos(getAngle(), getSpeed());
+            pt = a.getNextPos(getAngle(), getSpeed(), SimulatorSettings.getFramesPerSecond());
             if(checkCollision(a, a.getLatestPos(), pt)) {
                 a.updatePos(pt);
             }
