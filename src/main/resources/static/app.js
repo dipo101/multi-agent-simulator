@@ -1,23 +1,33 @@
 var stompClient = null;
 var plotData = [];
 
-function updateGraph(data){
+function updateGraph(data) {
     console.log("Got data from server: " + data);
-
-    for(var agent in data){
-        if (!plotData.hasOwnProperty(agent)){
+    var ind = 0;
+    var array = [];
+    var xUpdates = [];
+    var yUpdates = [];
+    var init = Object.keys(plotData).length === 0;
+    for (var agent in data) {
+        if (!plotData.hasOwnProperty(agent)) {
             plotData[agent] = {
-                x:[],
-                y:[],
-                mode: 'lines+markers'
+                x: [],
+                y: [],
+                mode: 'lines+markers',
+                name: agent
             };
         }
         plotData[agent].x.push(data[agent].x);
         plotData[agent].y.push(data[agent].y);
+        xUpdates.push([data[agent].x]);
+        yUpdates.push([data[agent].y]);
+        array.push(ind++);
     }
-
-    var layout = {};
-    Plotly.update('plot', Object.values(plotData), layout);
+    if (init) {
+        Plotly.newPlot('plot', Object.values(plotData), {});
+        return;
+    }
+    Plotly.extendTraces('plot', {x: xUpdates, y: yUpdates}, array);
 }
 
 function connect() {
@@ -29,22 +39,21 @@ function connect() {
             updateGraph(JSON.parse(data.body));
         });
     });
-    plotData = [];
-    Plotly.newPlot('plot', plotData, {});
+    Plotly.newPlot('plot', [], {});
 }
 
 function sendSetting() {
     stompClient.send("/app/settings", {}, JSON.stringify({
         'numAgents': $("#a1").val(),
         'angleSettings': {
-            'angleSamplingStrategy':$("#a4").val(),
-            'maxAnglePerFrame':$("#a2").val(),
-            'minAnglePerFrame':$("#a3").val(),
+            'angleSamplingStrategy': $("#a4").val(),
+            'maxAnglePerFrame': $("#a2").val(),
+            'minAnglePerFrame': $("#a3").val(),
         },
         'speedSettings': {
-            'maxSpeedPerFrame':$("#a5").val(),
-            'minSpeedPerFrame':$("#a6").val(),
-            'speedSamplingStrategy':$("#a7").val(),
+            'maxSpeedPerFrame': $("#a5").val(),
+            'minSpeedPerFrame': $("#a6").val(),
+            'speedSamplingStrategy': $("#a7").val(),
         }
 
     }));
