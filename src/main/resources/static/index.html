@@ -21,20 +21,21 @@
             <div class="form-group row">
                 <label for="a2" class="col-sm-6 col-form-label">Max Angle per Frame</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="a2" name="max-angle" value="30">
+                    <input type="text" class="form-control" id="a2" name="max-angle" value="2">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="a3" class="col-sm-6 col-form-label">Min Angle per Frame</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="a3" name="min-angle" value="20">
+                    <input type="text" class="form-control" id="a3" name="min-angle" value="0">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="a4" class="col-sm-6 col-form-label">Angle Sampling Strategy</label>
                 <div class="col-sm-6">
                     <select class="custom-select" id="a4" name="angle-sampling-strategy">
-                        <option selected value="linear">Linear</option>
+                        <option value="linear">Linear</option>
+                        <option selected value="random">Random</option>
                     </select>
                 </div>
             </div>
@@ -47,14 +48,15 @@
             <div class="form-group row">
                 <label for="a6" class="col-sm-6 col-form-label">Min Speed per Frame</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="a6" name="max-angle" value="0">
+                    <input type="text" class="form-control" id="a6" name="min-speed" value="400000">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="a7" class="col-sm-6 col-form-label">Speed Sampling Strategy</label>
                 <div class="col-sm-6">
                     <select class="custom-select" id="a7" name="speed-sampling-strategy">
-                        <option selected value="linear">Linear</option>
+                        <option value="linear">Linear</option>
+                        <option selected value="random">Random</option>
                     </select>
                 </div>
             </div>

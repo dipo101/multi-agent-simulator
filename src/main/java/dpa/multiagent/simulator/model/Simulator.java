@@ -31,7 +31,7 @@ public class Simulator {
         double bDistance = getDistance(intersectionPoint, startPosB);
 
 
-        return (aDistance / getSpeed()) == (bDistance / getSpeed());
+        return (int) (aDistance / getSpeed()) == (int) (bDistance / getSpeed());
     }
 
     private double getDistance(Point2D posA, Point2D posB) {
