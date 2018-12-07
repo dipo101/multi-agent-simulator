@@ -12,7 +12,8 @@ class SpeedSettings {
     }
 
     enum SPEED_SAMPLING_STRATEGY {
-        LINEAR("linear");
+        LINEAR("linear"),
+        RANDOM("random");
         String name;
 
         SPEED_SAMPLING_STRATEGY(String name) {

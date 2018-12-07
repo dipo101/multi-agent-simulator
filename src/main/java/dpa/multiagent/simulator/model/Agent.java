@@ -22,11 +22,11 @@ public class Agent {
         }
     }
 
-    public Point2D getNextPos(double angle, int speedMPH, int FPS) throws Exception {
+    public Point2D getNextPos(double angle, double speedMPH, int FPS) throws Exception {
         Point2D pt = new Point2D.Double();
         double x, y;
         double dist;
-        double speedMPS = speedMPH / (60 * 60.0);
+        double speedMPS = speedMPH / (60 * 60);
 
         // dist = speed * time
         // update is called once per frame

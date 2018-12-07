@@ -12,7 +12,8 @@ class AngleSettings {
     }
 
     enum ANGLE_SAMPLING_STRATEGY {
-        LINEAR("linear");
+        LINEAR("linear"),
+        RANDOM("random");
         String name;
 
         ANGLE_SAMPLING_STRATEGY(String name) {

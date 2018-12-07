@@ -75,17 +75,23 @@ public class Simulator {
             case LINEAR:
                 ret = (settings.minAnglePerFrame + settings.maxAnglePerFrame) / 2;
                 break;
+            case RANDOM:
+                ret = (Math.random() * (settings.maxAnglePerFrame - settings.minAnglePerFrame)) + settings.minAnglePerFrame;
+                break;
         }
 
         return ret;
     }
 
-    public int getSpeed() {
-        int ret = 1;
+    public double getSpeed() {
+        double ret = 1;
 
         switch (settings.getSpeedSettings().speedSamplingStrategy) {
             case LINEAR:
-                ret = (settings.minSpeedPerFrame + settings.maxSpeedPerFrame) / 2;
+                ret = (settings.minSpeedPerFrame + settings.maxSpeedPerFrame) / 2.0;
+                break;
+            case RANDOM:
+                ret = (Math.random() * (settings.maxSpeedPerFrame - settings.minSpeedPerFrame)) + settings.minSpeedPerFrame;
                 break;
         }
 
@@ -118,7 +124,7 @@ public class Simulator {
         agents = new ArrayList<>();
 
         for (int i = 0; i < settings.numAgents; i++)
-            agents.add(new Agent(i+1));
+            agents.add(new Agent(i + 1));
     }
 
     class Line {
